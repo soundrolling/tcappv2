@@ -1,0 +1,99 @@
+body, input, textarea, button, select {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f4f4f9;
+  color: #333;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+p {
+  margin: 10px 0 20px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px 0;
+  display: block;
+  width: 100%;
+}
+button:hover {
+  background-color: #0056b3;
+}
+button.green {
+  background-color: #28a745;
+}
+button.green:hover {
+  background-color: #218838;
+}
+.success-message {
+  color: green;
+  font-size: 16px;
+  display: none;
+}
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.table-container {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+  font-size: 16px;
+}
+td {
+  background-color: #ffffff;
+  font-size: 14px;
+}
+.hidden {
+  display: none;
+}

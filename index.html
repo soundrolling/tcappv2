@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timecode Notes Field Recording App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Timecode Notes Field Recording App</h2>
+    <p><strong>Disclaimer:</strong> Data is saved locally on your device. Use the "Clear All" button to reset everything.</p>
+    <fieldset>
+      <legend>Time Settings</legend>
+      <div><label for="fps">Current Time (HH:MM:SS:FF):</label> <span id="deviceTime">00:00:00:00</span></div>
+      <div><label for="fps">Set FPS:</label>
+        <select id="fps" onchange="updateDeviceTime()">
+          <option value="23.976">23.98</option>
+          <option value="24">24</option>
+          <option value="25" selected="selected">25</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+      <div><input id="locationToggle" type="checkbox" onchange="toggleLocation()"> <label for="locationToggle">Enable Location Data - (This will slow performance for generating new timestamped notes)</label></div>
+    </fieldset>
+    <button id="showDetailsButton" class="hidden" onclick="showDetails()">Show Project Details</button>
+    <button id="hideDetailsButton" onclick="hideDetails()">Hide Project Details</button>
+    <fieldset class="toggle-box" id="mixerDetails">
+      <legend>Project Details</legend>
+      <div><label for="projectName">Project:</label> <input value="Default" placeholder="Enter Project Name" id="projectName" type="text"></div>
+      <div><label for="mixerName">Mixer Name:</label> <input placeholder="Enter Mixer's Name" id="mixerName" type="text"></div>
+      <div><label for="mixerEmail">Mixer Email:</label> <input placeholder="Enter Mixer's Email" id="mixerEmail" type="email"></div>
+      <div><label for="mixerPhone">Mixer Phone:</label> <input placeholder="Enter Mixer's Phone" id="mixerPhone" type="tel"></div>
+      <div><label for="sampleRate">Sample Rate:</label> <input placeholder="Enter Sample Rate (Hz)" id="sampleRate" type="text"></div>
+      <div><label for="bitDepth">Bit Depth:</label> <input placeholder="Enter Bit Depth (bits)" id="bitDepth" type="text"></div>
+      <div><label for="micsUsed">Mics Used:</label> <input placeholder="Enter Mics Used" id="micsUsed" type="text"></div>
+      <button onclick="saveMixerDetails()">Save Details</button> <span class="success-message" id="saveSuccess">✔ Saved!</span>
+    </fieldset>
+    <button class="green" onclick="addTimestamp()">Generate Timestamped Note</button>
+    <div id="notesContainer"></div>
+    <div class="table-container">
+      <table id="notesTable">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Notes</th>
+            <th class="hidden">Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button onclick="clearAll()">Clear All</button> <button onclick="exportTableToCSV()">Export Table to CSV</button>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
